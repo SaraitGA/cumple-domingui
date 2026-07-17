@@ -6,90 +6,88 @@
 <title>Feliz Cumpleaños ❤️</title>
 
 <style>
-
 body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:linear-gradient(135deg,#ffd6e7,#fff3c4);
-overflow:hidden;
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:linear-gradient(135deg,#ffd6e7,#fff3c4);
+    overflow:hidden;
 }
 
 .pantalla{
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-height:100vh;
-text-align:center;
-padding:25px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    height:100vh;
+    padding:20px;
 }
 
-h1{
-color:#ff4d88;
+h1,h2{
+    color:#ff4d88;
 }
 
 p{
-font-size:20px;
-max-width:600px;
-line-height:1.6;
+    font-size:20px;
+    line-height:1.6;
+    max-width:650px;
 }
 
 button{
-margin-top:25px;
-padding:12px 28px;
-font-size:18px;
-border:none;
-border-radius:10px;
-background:#ff4d88;
-color:white;
-cursor:pointer;
+    margin-top:25px;
+    padding:12px 30px;
+    border:none;
+    border-radius:12px;
+    background:#ff4d88;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    transform:scale(1.05);
 }
 
 img{
-width:280px;
-border-radius:20px;
-box-shadow:0 0 15px rgba(0,0,0,.2);
-margin:20px;
-display:none;
-}
-
-.heart{
-position:absolute;
-font-size:25px;
-animation:subir 5s linear infinite;
-}
-
-@keyframes subir{
-0%{
-transform:translateY(100vh);
-opacity:1;
-}
-100%{
-transform:translateY(-120px);
-opacity:0;
-}
+    width:280px;
+    border-radius:20px;
+    margin:20px;
+    display:none;
+    box-shadow:0 0 20px rgba(0,0,0,.25);
 }
 
 .confeti{
-position:absolute;
-width:10px;
-height:10px;
-background:red;
-animation:caer 4s linear infinite;
+    position:absolute;
+    width:8px;
+    height:8px;
+    animation:caer 4s linear infinite;
 }
 
 @keyframes caer{
-
-0%{
-transform:translateY(-20px) rotate(0);
+    from{
+        transform:translateY(-20px) rotate(0deg);
+    }
+    to{
+        transform:translateY(110vh) rotate(360deg);
+    }
 }
 
-100%{
-transform:translateY(110vh) rotate(360deg);
+.corazon{
+    position:absolute;
+    font-size:25px;
+    animation:subir 5s linear infinite;
 }
 
+@keyframes subir{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120px);
+        opacity:0;
+    }
 }
-
 </style>
 
 </head>
@@ -100,33 +98,26 @@ transform:translateY(110vh) rotate(360deg);
 
 <h1 id="titulo">🎉 ¡Hola Domingui! ❤️</h1>
 
-<p id="texto">
-
 <h2>🎂 ¡Felices 23 vueltas al sol! 🎈</h2>
 
+<p id="texto">
 Hoy no quería felicitarte de una forma cualquiera...
-
 <br><br>
-
-Preparé una pequeña sorpresa solamente para ti.
-
-🥹❤️
-
+Preparé una pequeña sorpresa solamente para ti. 🥹❤️
 </p>
 
 <img id="foto" src="foto1.jpeg">
 
-<button onclick="siguiente()">
-
+<button id="boton" onclick="siguiente()">
 Comenzar ✨
-
 </button>
 
 </div>
 
 <script>
 
-for(let i=0;i<80;i++){
+// Confeti
+for(let i=0;i<100;i++){
 
 let c=document.createElement("div");
 
@@ -134,7 +125,7 @@ c.className="confeti";
 
 c.style.left=Math.random()*100+"vw";
 
-c.style.background=["#ff4d88","#ffd700","#00c3ff","#7CFC00"][Math.floor(Math.random()*4)];
+c.style.background=["#ff4d88","#ffd700","#00c3ff","#7CFC00","#ff9800"][Math.floor(Math.random()*5)];
 
 c.style.animationDelay=Math.random()*4+"s";
 
@@ -147,68 +138,54 @@ let pagina=1;
 function siguiente(){
 
 let titulo=document.getElementById("titulo");
-
 let texto=document.getElementById("texto");
-
 let foto=document.getElementById("foto");
+let boton=document.getElementById("boton");
 
-let boton=document.querySelector("button");
-
-if(pagina==1){
+if(pagina===1){
 
 titulo.innerHTML="🥰 Gracias por existir";
 
 texto.innerHTML=`
-
 Desde que llegaste a mi vida has hecho mis días mucho más bonitos.
-
 <br><br>
-
 Gracias por cada risa, cada abrazo y cada momento que compartimos.
-
 <br><br>
-
 Hoy solo quiero que seas muy feliz porque te lo mereces muchísimo. ❤️
-
 `;
 
 foto.style.display="block";
 
 boton.innerHTML="Siguiente ➜";
 
-pagina++;
+pagina=2;
 
-}
-
-else{
+}else{
 
 titulo.innerHTML="❤️ 23 años ❤️";
 
 texto.innerHTML=`
-
 <h2>8401 días</h2>
 
 ✨ Miles de sonrisas.
-
 <br><br>
 
 💖 Muchísimos momentos hermosos.
-
 <br><br>
 
-Y apenas comienza la aventura... ❤️
-
+❤️ Y apenas comienza la aventura.
 `;
 
 foto.style.display="none";
 
 boton.style.display="none";
 
-for(let i=0;i<100;i++){
+// Corazones
+for(let i=0;i<120;i++){
 
 let h=document.createElement("div");
 
-h.className="heart";
+h.className="corazon";
 
 h.innerHTML="❤️";
 
@@ -217,6 +194,8 @@ h.style.left=Math.random()*100+"vw";
 h.style.animationDelay=Math.random()*5+"s";
 
 document.body.appendChild(h);
+
+}
 
 }
 
