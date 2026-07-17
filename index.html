@@ -6,6 +6,7 @@
 <title>Feliz Cumpleaños ❤️</title>
 
 <style>
+
 body{
     margin:0;
     font-family:Arial,Helvetica,sans-serif;
@@ -20,27 +21,30 @@ body{
     align-items:center;
     text-align:center;
     height:100vh;
-    padding:20px;
+    padding:10px;
+    box-sizing:border-box;
 }
 
 h1,h2{
     color:#ff4d88;
+    margin:8px;
 }
 
 p{
-    font-size:20px;
-    line-height:1.6;
-    max-width:650px;
+    font-size:17px;
+    line-height:1.4;
+    max-width:600px;
+    margin:10px;
 }
 
 button{
-    margin-top:25px;
-    padding:12px 30px;
+    margin-top:15px;
+    padding:10px 28px;
     border:none;
     border-radius:12px;
     background:#ff4d88;
     color:white;
-    font-size:18px;
+    font-size:17px;
     cursor:pointer;
 }
 
@@ -48,13 +52,21 @@ button:hover{
     transform:scale(1.05);
 }
 
-img{
-    width:280px;
-    border-radius:20px;
-    margin:20px;
-    display:none;
-    box-shadow:0 0 20px rgba(0,0,0,.25);
+.contenedorFotos{
+    display:flex;
+    justify-content:center;
+    gap:15px;
 }
+
+img{
+    width:160px;
+    height:160px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,.25);
+    display:none;
+}
+
 
 .confeti{
     position:absolute;
@@ -72,6 +84,7 @@ img{
     }
 }
 
+
 .corazon{
     position:absolute;
     font-size:25px;
@@ -88,11 +101,13 @@ img{
         opacity:0;
     }
 }
+
 </style>
 
 </head>
 
 <body>
+
 
 <div class="pantalla">
 
@@ -100,23 +115,39 @@ img{
 
 <h2>🎂 ¡Felices 23 vueltas al sol! 🎈</h2>
 
+
 <p id="texto">
+
 Hoy no quería felicitarte de una forma cualquiera...
 <br><br>
 Preparé una pequeña sorpresa solamente para ti. 🥹❤️
+
 </p>
 
+
+<div class="contenedorFotos">
+
 <img id="foto" src="foto1.jpeg">
+
+<img id="foto2" src="foto2.jpeg">
+
+</div>
+
 
 <button id="boton" onclick="siguiente()">
 Comenzar ✨
 </button>
 
+
 </div>
+
+
 
 <script>
 
+
 // Confeti
+
 for(let i=0;i<100;i++){
 
 let c=document.createElement("div");
@@ -133,75 +164,129 @@ document.body.appendChild(c);
 
 }
 
+
+
 let pagina=1;
+
+
 
 function siguiente(){
 
+
 let titulo=document.getElementById("titulo");
+
 let texto=document.getElementById("texto");
+
 let foto=document.getElementById("foto");
+
+let foto2=document.getElementById("foto2");
+
 let boton=document.getElementById("boton");
+
+
 
 if(pagina===1){
 
+
 titulo.innerHTML="🥰 Gracias por existir";
 
+
 texto.innerHTML=`
+
 Desde que llegaste a mi vida has hecho mis días mucho más bonitos.
+
 <br><br>
+
 Gracias por cada risa, cada abrazo y cada momento que compartimos.
+
 <br><br>
+
 Hoy solo quiero que seas muy feliz porque te lo mereces muchísimo. ❤️
+
 `;
+
+
 
 foto.style.display="block";
 
+foto2.style.display="block";
+
+
 boton.innerHTML="Siguiente ➜";
+
 
 pagina=2;
 
+
+
 }else{
+
 
 titulo.innerHTML="❤️ 23 años ❤️";
 
+
 texto.innerHTML=`
+
 <h2>8401 días</h2>
 
 ✨ Miles de sonrisas.
+
 <br><br>
 
 💖 Muchísimos momentos hermosos.
+
 <br><br>
 
 ❤️ Y apenas comienza la aventura.
+
 `;
+
+
 
 foto.style.display="none";
 
+foto2.style.display="none";
+
+
 boton.style.display="none";
 
+
+
 // Corazones
+
 for(let i=0;i<120;i++){
+
 
 let h=document.createElement("div");
 
+
 h.className="corazon";
+
 
 h.innerHTML="❤️";
 
+
 h.style.left=Math.random()*100+"vw";
+
 
 h.style.animationDelay=Math.random()*5+"s";
 
+
 document.body.appendChild(h);
 
-}
 
 }
 
+
 }
+
+
+}
+
+
 
 </script>
+
 
 </body>
 </html>
